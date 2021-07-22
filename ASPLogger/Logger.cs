@@ -4,7 +4,7 @@ using System.IO;
 namespace ASPLogger
 {
     /// <summary>
-    /// A class library to log information to the Console and/or File simulteaneously
+    /// A simple class library to log information to the Console and/or Text File simulteaneously
     /// </summary>
     public class Logger
     {
@@ -12,9 +12,9 @@ namespace ASPLogger
         /// <summary>Indicates if logging should be directed to the Console or not</summary>
         public bool ToConsole { get; set; } = true;
 
-
         /// <summary>The name of the text file to generate</summary>
         public string FileName { get; set; } = "LogFile.log";
+
         /// <summary>The folder to save the text file in</summary>
         public string Folder { get; set; } = "./";
 
@@ -27,15 +27,16 @@ namespace ASPLogger
 
         public Logger()
         {
-
         }
 
+        /// <summary>Start logging messages to the text file</summary>
         public void StartLoggingToTextFile()
         {
             if (textWriter == null)
                 textWriter = new StreamWriter(FullPath);
         }
 
+        /// <summary>Stop logging messages to the text file</summary>
         public void StopLoggingToTextFile()
         {
             if (textWriter != null)
@@ -55,7 +56,7 @@ namespace ASPLogger
                 textWriter.Write(message);
         }
 
-        /// <summary>Write a message to the log, followed by an eol marker</summary>
+        /// <summary>Write a message to the log, followed by the current line terminator</summary>
         public void WriteLine(string message)
         {
 
